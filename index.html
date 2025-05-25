@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmptyCup</title>
+    <link rel="icon" href="/favicon.ico" />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-white text-gray-900 ">
+    
+    <header class="flex items-center justify-between px-4 py-5 w-full bg-white border-b">
+  <img src="/icons/logo.svg" alt="EmptyCup Logo" class="w-11 h-11" />
+
+  <h1 class="text-[30px] mr-3 font-semibold tracking-wide text-[#5A514D]">EmptyCup</h1>
+
+  <div class="flex flex-col justify-center items-center space-y-[3px]">
+    <span class="w-1.5 h-1.5 rounded-full bg-[#3D3735]"></span>
+    <span class="w-1.5 h-1.5 rounded-full bg-[#3D3735]"></span>
+    <span class="w-1.5 h-1.5 rounded-full bg-[#3D3735]"></span>
+  </div>
+</header>
+
+
+
+
+
+<nav class="grid grid-cols-6 bg-white text-xs text-[#4B4B4B] w-full py-5">
+  <!-- Contacts -->
+  <div class="flex flex-col items-center justify-center">
+    <button id="tab-contacts" class="tab flex flex-col items-center space-y-1">
+      <img src="/icons/contacts.svg" class="w-[28px] h-[36px]" />
+      <span>Contacts</span>
+    </button>
+  </div>
+
+  <!-- Gallery -->
+  <div class="flex flex-col items-center justify-center">
+    <button id="tab-gallery" class="tab flex flex-col items-center space-y-1">
+      <img src="/icons/gallery.svg" class="w-[28px] h-[36px]" />
+      <span>Gallery</span>
+    </button>
+  </div>
+
+  <!-- Map -->
+  <div class="flex flex-col items-center justify-center">
+    <button id="tab-map" class="tab flex flex-col items-center space-y-1">
+      <img src="/icons/map.svg" class="w-[20px] h-[36px]" />
+      <span>Map</span>
+    </button>
+  </div>
+
+  <!-- Empty column for spacing -->
+  <div></div>
+
+  <!-- Shortlisted -->
+  <div class="flex flex-col items-center justify-center">
+    <button id="tab-shortlisted" class="tab flex flex-col items-center space-y-1">
+      <img id="shortlisted-icon" src="/icons/shortlisted.svg" class="w-[28px] h-[36px]" />
+      <span>Shortlisted</span>
+    </button>
+  </div>
+
+  <!-- Sort -->
+  <div class="flex flex-col items-center justify-center">
+    <button id="tab-sort" class="tab flex flex-col items-center space-y-1">
+      <img src="/icons/sort.svg" class="w-[28px] h-[36px]" />
+      <span>Sort</span>
+    </button>
+  </div>
+</nav>
+
+
+
+    <main id="listings-container" class="w-full">
+      <!-- Listings will be dynamically injected here -->
+    </main>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "epic-designs",
+    "name": "Epic Designs",
+    "rating": 4,
+    "projects": 57,
+    "years": 8,
+    "price": "$$",
+    "phones": ["+91-984532853", "+91-984532854"]
+  },
+  {
+    "id": "studio-space",
+    "name": "Studio Space",
+    "rating": 5,
+    "projects": 92,
+    "years": 12,
+    "price": "$$$",
+    "phones": ["+91-984532999"]
+  }
+]
