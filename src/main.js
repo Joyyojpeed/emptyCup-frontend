@@ -29,13 +29,21 @@ async function fetchListings() {
 
 // Initialize the app
 async function init() {
+  container.style.opacity = '0';
+  container.style.transition = 'opacity 0.4s ease';
+  
   allListings = await fetchListings();
+  
   if (allListings.length > 0) {
     renderAllListings();
     if (filterShortlisted) {
       applyShortlistedFilter();
       updateTabAppearance();
     }
+    
+    setTimeout(() => {
+      container.style.opacity = '1';
+    }, 50);
   }
 }
 
@@ -79,30 +87,32 @@ function renderListing(listing, index) {
   card.innerHTML = `
     <!-- Left Section -->
     <div class="flex-1 px-6 space-y-3">
-      <h2 class="text-xl font-bold text-[#1C1C1C]">${listing.name}</h2>
+      <h2 class="text-2xl font-bold text-[#1C1C1C]">${listing.name}</h2>
       <div class="flex items-center space-x-1">
         ${renderStars(listing.rating)}
       </div>
-      <p class="text-xs text-[#000000]">
+      <p class="text-sm text-[#000000]">
         ${listing.description}
       </p>
 
-      <div class="flex gap-10 pt-2 font-semibold text-xs text-[#1C1C1C] mb-2">
+      <!-- Increased spacing here -->
+      <div class="flex gap-10 pt-6 font-semibold text-xs text-[#1C1C1C] mb-2">
         <div class="text-center">
-          <div class="text-2xl">${listing.projects}</div>
+          <div class="text-3xl">${listing.projects}</div>
           <div class="text-[#000000]">Projects</div>
         </div>
         <div class="text-center">
-          <div class="text-2xl">${listing.years}</div>
+          <div class="text-3xl">${listing.years}</div>
           <div class="text-[#000000] ">Years</div>
         </div>
         <div class="text-center">
-          <div class="text-2xl">${listing.price}</div>
+          <div class="text-3xl">${listing.price}</div>
           <div class="text-[#000000]">Price</div>
         </div>
       </div>
 
-      <div class="pt-2 text-[16px] font-medium text-[#1C1C1C] space-y-1">
+      <!-- Increased spacing here -->
+      <div class="pt-4 text-[18px] font-medium text-[#1C1C1C] space-y-1">
         ${listing.phones.map((p) => `<div>${p}</div>`).join("")}
       </div>
     </div>
@@ -113,19 +123,19 @@ function renderListing(listing, index) {
     <!-- Right Action Section -->
     <div class="flex items-center pr-6 mt-4">
       <div class="flex flex-col items-center justify-center text-[#8D4F2F] text-xs space-y-8">
-        <button class="flex flex-col items-center hover:text-black">
+        <button class="flex flex-col items-center hover:text-black transition-colors">
           <img src="/icons/details.svg" class="w-5 h-5" />
           <span>Details</span>
         </button>
-        <button class="flex flex-col items-center hover:text-black">
+        <button class="flex flex-col items-center hover:text-black transition-colors">
           <img src="/icons/hide.svg" class="w-5 h-5" />
           <span>Hide</span>
         </button>
-        <button class="shortlist-btn flex flex-col items-center hover:text-orange-600" data-id="${listing.id}">
+        <button class="shortlist-btn flex flex-col items-center hover:text-orange-600 transition-colors" data-id="${listing.id}">
           <img src="/icons/${isShortlisted ? "shortlistedList" : "shortlistedbutton"}.svg" class="w-5 h-5" />
           <span class="${isShortlisted ? 'text-orange-600 font-semibold' : ''}">Shortlist</span>
         </button>
-        <button class="flex flex-col items-center hover:text-black">
+        <button class="flex flex-col items-center hover:text-black transition-colors">
           <img src="/icons/report.svg" class="w-5 h-5" />
           <span>Report</span>
         </button>
@@ -166,8 +176,15 @@ function updateTabAppearance() {
 document.getElementById("tab-shortlisted").addEventListener("click", () => {
   filterShortlisted = !filterShortlisted;
   localStorage.setItem('filterShortlisted', JSON.stringify(filterShortlisted));
-  applyShortlistedFilter();
-  updateTabAppearance();
+  
+  container.style.opacity = '0.9';
+  container.style.transition = 'opacity 0.3s ease';
+  
+  setTimeout(() => {
+    applyShortlistedFilter();
+    updateTabAppearance();
+    container.style.opacity = '1';
+  }, 150);
 });
 
 // Apply filter to listings
@@ -178,6 +195,5 @@ function applyShortlistedFilter() {
     card.style.display = filterShortlisted && !shortlistedIds.has(id) ? "none" : "flex";
   });
 }
-
 
 init();
